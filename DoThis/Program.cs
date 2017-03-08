@@ -25,12 +25,19 @@ namespace WinTail
             //var consoleReader = MyActorSystem.ActorOf(Props.Create
             //    (() => new ConsoleReaderActor(consoleWriter)));
 
+            
             Props consoleWriterProps = Props.Create(() => new ConsoleWriterActor());
             IActorRef consoleWriterActor = MyActorSystem.ActorOf(consoleWriterProps,
                 "consoleWriterActor");
-            Props validationProp = Props.Create(() => new ValidationActor(consoleWriterActor));
+            Props tailCoordinatorProp = Props.Create(() => new TailCoordinatorActor());
+            IActorRef tailCoordinatorActor = MyActorSystem.ActorOf(tailCoordinatorProp,
+                "tailCoordinatorActor");
+
+            Props validationProp = Props.Create(() => new FileValidatorActor(consoleWriterActor,
+                tailCoordinatorActor));
             IActorRef validationActor = MyActorSystem.ActorOf(validationProp,
                    "validationActor");
+
             Props consoleReaderProps = Props.Create(() => new ConsoleReaderActor(validationActor));
             IActorRef consoleReaderActor = MyActorSystem.ActorOf(consoleReaderProps,
                 "consoleReaderActor");
@@ -41,21 +48,6 @@ namespace WinTail
             MyActorSystem.WhenTerminated.Wait();
         }
 
-        private static void PrintInstructions()
-        {
-            Console.WriteLine("Write whatever you want into the console!");
-            Console.Write("Some lines will appear as");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write(" red ");
-            Console.ResetColor();
-            Console.Write(" and others will appear as");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(" green! ");
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Type 'exit' to quit this application at any time.\n");
-        }
     }
     #endregion
 }
