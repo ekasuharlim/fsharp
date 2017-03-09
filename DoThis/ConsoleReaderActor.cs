@@ -12,22 +12,22 @@ namespace WinTail
 
         public const string StartCommand = "start";
         public const string ExitCommand = "exit";
-        private readonly IActorRef _validationActor;
 
-        public ConsoleReaderActor(IActorRef validationActor)
-        {
-            _validationActor = validationActor;
-        }
 
         protected override void OnReceive(object message)
         {
-   
+
+            var inputText = String.Empty;
             if (message.Equals(StartCommand))
             {
                 DoPrintInstructions();
-
+                inputText = @"D:\temp\testtail.txt";
             }
-            var inputText = Console.ReadLine();
+            else
+            {
+                inputText = Console.ReadLine();
+            }
+
             if (String.Equals(inputText, ExitCommand, StringComparison.OrdinalIgnoreCase))
             {
                 // shut down the entire actor system (allows the process to exit)
@@ -35,8 +35,7 @@ namespace WinTail
             }
             else
             {
-                _validationActor.Tell(inputText);
-                // do validation    
+                Context.ActorSelection("akka://MyActorSystem/user/validationActor").Tell(inputText);
             }
 
 

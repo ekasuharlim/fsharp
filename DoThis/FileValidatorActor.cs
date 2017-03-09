@@ -11,22 +11,19 @@ namespace WinTail
     public class FileValidatorActor : UntypedActor
     {
         private readonly IActorRef _consoleWriterActor;
-        private readonly IActorRef _tailCoordinatorActor;
 
-        public FileValidatorActor(IActorRef consoleWriterActror, 
-            IActorRef tailCoordinatorActor)
+        public FileValidatorActor(IActorRef consoleWriterActor)
         {
-            _consoleWriterActor = consoleWriterActror;
-            _tailCoordinatorActor = tailCoordinatorActor;
+            _consoleWriterActor = consoleWriterActor;
         }
+
 
         protected override void OnReceive(object message)
         {
             var msg = message as String;
             if (string.IsNullOrEmpty(msg))
             {
-                _consoleWriterActor.Tell(new Messages.NullInputError("Input is blank"));
-                Sender.Tell(new Messages.ContinueProcessing());
+                _consoleWriterActor.Tell("Input is blank");
             }
             else
             {
@@ -35,7 +32,7 @@ namespace WinTail
                 {
                     _consoleWriterActor.Tell(new Messages.InputSuccess(
                         String.Format("Start tailing {0}", msg)));
-                    _tailCoordinatorActor.Tell(
+                    Context.ActorSelection("akka://MyActorSystem/user/tailCoordinatorActor").Tell(
                         new TailCoordinatorActor.StartTail(msg, _consoleWriterActor));
                 }
                 else
