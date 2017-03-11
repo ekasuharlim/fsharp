@@ -1,0 +1,15 @@
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\ChartApp.exe.config
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\ChartApp.exe
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\ChartApp.pdb
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\Akka.dll
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\Newtonsoft.Json.dll
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\System.Collections.Immutable.dll
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\Akka.xml
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\Newtonsoft.Json.xml
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\bin\Debug\System.Collections.Immutable.xml
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.csprojResolveAssemblyReference.cache
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.Main.resources
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.Properties.Resources.resources
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.csproj.GenerateResource.Cache
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.exe
+D:\Dropbox\fsharp\githubrepo\fsharp\Unit2\obj\Debug\ChartApp.pdb
