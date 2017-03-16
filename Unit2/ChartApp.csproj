@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,7 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\ButtonToggleActor.cs" />
     <Compile Include="Actors\ChartingActor.cs" />
+    <Compile Include="Actors\GatherMetrics .cs" />
+    <Compile Include="Actors\PerformanceCounterActor.cs" />
+    <Compile Include="Actors\PerformanceCounterCoordinatorActor.cs" />
     <Compile Include="ChartDataHelper.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
